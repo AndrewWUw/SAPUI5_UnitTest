@@ -15,7 +15,7 @@
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-preload="async"
 			data-sap-ui-resourceroots='{
-				"sap.ui.demo.bulletinboard": "../"
+				"worklist": "../"
 			}'
 			data-sap-ui-frameOptions='allow'>    // NON-SECURE setting for testing environment
 	</script>
@@ -24,7 +24,7 @@
 		sap.ui.getCore().attachInit(function () {
 
 			sap.ui.require([
-				"sap/ui/demo/bulletinboard/localService/mockserver",
+				"worklist/localService/mockserver",
 				"sap/m/Shell",
 				"sap/ui/core/ComponentContainer"
 			], function (mockserver, Shell, ComponentContainer) {
@@ -35,7 +35,7 @@
 				new Shell({
 					app: new ComponentContainer({
 						height: "100%",
-						name: "sap.ui.demo.bulletinboard"
+						name: "worklist"
 					})
 				}).placeAt("content");
 			});
