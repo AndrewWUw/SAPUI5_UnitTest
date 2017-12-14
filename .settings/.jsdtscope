@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="test/unit/|**/bower_components/*|test/unit/model/|**/node_modules/*|controller/|localService/|test/integration/|**/*.min.js|test/integration/pages/|model/" kind="src" path="src/WorkList/webapp"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="src/WorkList/webapp/controller"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="src/WorkList/webapp/localService"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="src/WorkList/webapp/model"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js|pages/" kind="src" path="src/WorkList/webapp/test/integration"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="src/WorkList/webapp/test/integration/pages"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js|model/" kind="src" path="src/WorkList/webapp/test/unit"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="src/WorkList/webapp/test/unit/model"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="com.sap.ide.ui5.jsdt.SAPUI5Libraries"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
