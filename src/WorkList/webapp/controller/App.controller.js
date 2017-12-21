@@ -11,7 +11,6 @@ sap.ui.define([
         busy: true,
         delay: 0
       });
-
       this.setModel(oViewModel, "appView");
 
       this.getOwnerComponent().getModel().metadataLoaded().then(function() {
