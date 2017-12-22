@@ -9,8 +9,9 @@
              width="auto"
              class="sapUiResponsiveMargin"
              items="{ path: '/Posts', sorter: { path: 'Title', descending: false } }"
-              busyIndicatorDelay="{worklistView>/tableBusyDelay}"
-              updateFinished="onUpdateFinished">
+             busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+             updateFinished="onUpdateFinished"
+             growing="true">
         <headerToolbar>
           <Toolbar>
             <Label id="tableHeader" text="{worklistView>/worklistTableTitle}" />
