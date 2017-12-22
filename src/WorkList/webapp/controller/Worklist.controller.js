@@ -3,11 +3,16 @@
 sap.ui.define([
   'worklist/controller/BaseController',
   'sap/ui/model/json/JSONModel',
-  'worklist/model/formatter'
-], function(BaseController, JSONModel, formatter) {
+  'worklist/model/formatter',
+  'worklist/model/FlaggedType'
+
+], function(BaseController, JSONModel, formatter, FlaggedType) {
   "use strict";
 
   return BaseController.extend("worklist.controller.Worklist", {
+    types: {
+      flagged: new FlaggedType()
+    },
 
     formatter: formatter,
 
