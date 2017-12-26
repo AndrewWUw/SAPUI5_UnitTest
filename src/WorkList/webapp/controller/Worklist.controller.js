@@ -4,9 +4,11 @@ sap.ui.define([
   'worklist/controller/BaseController',
   'sap/ui/model/json/JSONModel',
   'worklist/model/formatter',
-  'worklist/model/FlaggedType'
+  'worklist/model/FlaggedType',
+  "sap/ui/model/Filter",
+  "sap/ui/model/FilterOperator"
 
-], function(BaseController, JSONModel, formatter, FlaggedType) {
+], function(BaseController, JSONModel, formatter, FlaggedType, Filter, FilterOperator) {
   "use strict";
 
   return BaseController.extend("worklist.controller.Worklist", {
@@ -79,6 +81,33 @@ sap.ui.define([
         sTitle = this.getResourceBundle().getText("worklistTableTitle");
       }
       this.getModel("worklistView").setProperty("/worklistTableTitle", sTitle);
+    },
+
+    /**
+     * Event handler when a table item gets pressed
+     * @param {sap.ui.base.Event} oEvent the table selectionChange event
+     * @public
+     */
+    onPress: function(oEvent) {
+      this.getRouter().navTo("post", {
+        // The source is the list item that got pressed
+        postId: oEvent.getSource().getBindingContext().getProperty("PostID")
+      });
+    },
+
+    onFilterPosts: function(oEvent) {
+
+      // build filter array
+      var aFilter = [];
+      var sQuery = oEvent.getParameter("query");
+      if (sQuery) {
+        aFilter.push(new Filter("Title", FilterOperator.Contains, sQuery));
+      }
+
+      // filter binding
+      var oTable = this.getView().byId("table");
+      var oBinding = oTable.getBinding("items");
+      oBinding.filter(aFilter);
     },
 
     /* =========================================================== */

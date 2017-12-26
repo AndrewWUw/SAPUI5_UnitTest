@@ -31,7 +31,8 @@ sap.ui.define([
 
         sUrlParameters = "serverDelay=" + oOptions.delay;
 
-        this.iStartMyAppInAFrame(getFrameUrl(oOptions.hash, sUrlParameters));
+        var sFrameUrl = getFrameUrl(oOptions.hash, sUrlParameters)
+        this.iStartMyAppInAFrame(sFrameUrl);
       },
 
       iLookAtTheScreen: function() {

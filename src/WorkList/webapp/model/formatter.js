@@ -1,4 +1,7 @@
-sap.ui.define([], function() {
+sap.ui.define([
+  "worklist/model/DateFormatter"
+
+], function(DateFormatter) {
   "use strict";
 
   return {
@@ -34,6 +37,12 @@ sap.ui.define([], function() {
         return "Error";
       }
     },
+
+    date: function(date) {
+      return new DateFormatter({
+        now: Date.now
+      }).format(date);
+    }
 
   };
 });

@@ -3,9 +3,11 @@ sap.ui.require([
     'sap/ui/test/matchers/AggregationLengthEquals',
     'sap/ui/test/matchers/PropertyStrictEquals',
     'sap/ui/demo/bulletinboard/test/integration/pages/Common',
-    'sap/ui/test/actions/Press'
+    'sap/ui/test/actions/Press',
+    'sap/ui/test/matchers/BindingPath',
+    'sap/ui/test/actions/EnterText'
   ],
-  function(Opa5, AggregationLengthEquals, PropertyStrictEquals, Common, Press) {
+  function(Opa5, AggregationLengthEquals, PropertyStrictEquals, Common, Press, BindingPath, EnterText) {
     "use strict";
 
     var sViewName = "Worklist",
@@ -23,7 +25,29 @@ sap.ui.require([
               actions: new Press(),
               errorMessage: "The table doesn't have a trigger"
             });
+          },
+          iPressOnTheItemWithTheID: function(sId) {
+            return this.waitFor({
+              controlType: "sap.m.ColumnListItem",
+              viewName: sViewName,
+              matchers: new BindingPath({
+                path: "/Posts('" + sId + "')"
+              }),
+              actions: new Press(),
+              errorMessage: "No list item with the id " + sId + " was found."
+            });
+          },
+          iSearchFor: function(sSearchString) {
+            return this.waitFor({
+              id: "searchField",
+              viewName: sViewName,
+              actions: new EnterText({
+                text: sSearchString
+              }),
+              errorMessage: "SearchField was not found."
+            });
           }
+
         },
         assertions: {
           theTableShouldHavePagination: function() {
@@ -35,7 +59,7 @@ sap.ui.require([
                 length: 20
               }),
               success: function() {
-                Opa5.assert.ok(true, "The tabel has 20 items on the first page");
+                Opa5.assert.ok(true, "The table has 20 items on the first page");
               },
               errorMessage: "Table does not have all entries."
             });
@@ -72,7 +96,34 @@ sap.ui.require([
               },
               errorMessage: "The Table's header does not container the number of items: 23"
             });
+          },
+
+          iShouldSeeTheTable: function() {
+            return this.waitFor({
+              id: sTableId,
+              viewName: sViewName,
+              success: function() {
+                Opa5.assert.ok(true, "The table is visible");
+              },
+              errorMessage: "Was not able to see the table."
+            });
+          },
+
+          theTableHasOneItem: function() {
+            return this.waitFor({
+              id: sTableId,
+              viewName: sViewName,
+              matchers: new AggregationLengthEquals({
+                name: "items",
+                length: 1
+              }),
+              success: function() {
+                Opa5.assert.ok(true, "The table contains one corresponding entry");
+              },
+              errorMessage: "The table does not contain one item."
+            });
           }
+
 
         }
       }

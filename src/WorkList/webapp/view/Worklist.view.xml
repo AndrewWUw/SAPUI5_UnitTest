@@ -15,6 +15,8 @@
         <headerToolbar>
           <Toolbar>
             <Label id="tableHeader" text="{worklistView>/worklistTableTitle}" />
+            <ToolbarSpacer />
+            <SearchField id="searchField" width="auto" search="onFilterPosts" />
           </Toolbar>
         </headerToolbar>
         <columns>
@@ -30,7 +32,7 @@
           <Column width="80px" id="flaggedColumn" demandPopin="true" vAlign="Middle"/>
         </columns>
         <items>
-          <ColumnListItem vAlign="Middle">
+          <ColumnListItem vAlign="Middle" type="Navigation" press="onPress">
             <cells>
               <ObjectIdentifier title="{Title}" />
               <Text text="{Category}" />
